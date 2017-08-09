@@ -1,12 +1,16 @@
 function changeColor() {
-	var change={"colors": ["blue", "red", "green", "purple"], "fontFamilies":["Arial","Helvetica","Times NewRoman", "Impact"]};
-	x = change.colors[0];
-	y = change.fontFamilies[0];
-	for(i= 0; i<change.colors.length; i++) {
-		x += change.colors[i];
+	function colorArray() {
+		var change = {
+			"colors": ["blue", "red", "green", "purple"],
+			"fontFamilies": ["Arial", "Helvetica", "Times NewRoman", "Impact"]
+		};
+		var x = [0];
+		for(var i = 0; i < change.colors.length; i++) {
+			x += change.colors[i];
+		}
 	}
-	var colorChange = JSON.stringify(colorChange);
-	document.getElementById("content").style.color = colorChange;
+	JSON.stringify(colorArray());
+	document.getElementById("content").style.color = colorArray();
 
 }
 
