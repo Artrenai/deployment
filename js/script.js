@@ -1,11 +1,12 @@
 function changeColor() {
-	var change={"colors": ["blue", "red", "green", "purple"], "fontFamilies":["Arial","Helvetica","Times NewRoman", "Impact"]}
+	var change={"colors": ["blue", "red", "green", "purple"], "fontFamilies":["Arial","Helvetica","Times NewRoman", "Impact"]};
 	x = change.colors[0];
 	y = change.fontFamilies[0];
-	for (i= 0; i<change.colors.length, i++) {
+	for(i= 0; i<change.colors.length; i++) {
 		x += change.colors[i];
 	}
-	document.getElementById("content").style.color = "change";
+	var colorChange = JSON.stringify(colorChange);
+	document.getElementById("content").style.color = colorChange;
 
 }
 
