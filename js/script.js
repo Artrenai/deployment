@@ -1,21 +1,45 @@
-function changeColor() {
-	function colorArray() {
-		var change = {
-			"colors": ["blue", "red", "green", "purple"],
-			"fontFamilies": ["Arial", "Helvetica", "Times NewRoman", "Impact"]
-		};
-		var x = [0];
-		for(var i = 0; i < change.colors.length; i++) {
-			x += change.colors[i];
-		}
-	}
-	JSON.stringify(colorArray());
-	document.getElementById("content").style.color = colorArray();
+var Request;
+var counter = 0;
+var counterS = 0;
+var changeColorButton = document.getElementById("changeColorButton");
+changeColorButton.addEventListener("click", changeColor);
 
+function changeColor() {
+	Request = new XMLHttpRequest();
+	Request.open('Get', 'changes.json');
+	Request.onload = function() {
+		var changes = JSON.parse(Request.responseText);
+		document.getElementById("content").style.color = changes[0].colors[counter];
+
+	};
+	if(counter === 3) {
+		counter = 0;
+
+	}
+	else {
+		counter++;
+	}
+	Request.send();
 }
 
+document.getElementById("changeFontButton").addEventListener("click", changeFont);
+
 function changeFont() {
-	document.getElementById("content").style.fontFamily = "Impact";
+	Request = new XMLHttpRequest();
+	Request.open('Get', 'changes.json');
+	Request.onload = function() {
+		var changes = JSON.parse(Request.responseText);
+		document.getElementById("content").style.fontFamily = changes[0].fontFamilies[counterS];
+
+	};
+	if(counterS === 3) {
+		counterS = 0;
+
+	}
+	else {
+		counterS++;
+	}
+	Request.send();
 }
 
 function newName() {
